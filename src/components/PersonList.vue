@@ -17,6 +17,9 @@
       </v-icon>
       <span class="title font-weight-light">{{person.birthday}}</span>
     </v-card-title>
+      <v-card-text class="headline">
+      Biography
+    </v-card-text>
 
     <v-card-text class="headline font-weight-bold">
       "{{person.bio}}"
@@ -96,16 +99,16 @@
         <v-container>
           <v-row>
             <v-col cols="12" sm="6" md="4">
-              <v-text-field v-model="editPerson.firstname" label="First name"></v-text-field>
+              <v-text-field outlined v-model="editPerson.firstname" label="First name"></v-text-field>
             </v-col>
             <v-col cols="12" sm="6" md="4">
-              <v-text-field v-model="editPerson.lastname" label="Last name"></v-text-field>
+              <v-text-field outlined v-model="editPerson.lastname" label="Last name"></v-text-field>
             </v-col>
             <v-col cols="12" sm="6" md="4">
-              <v-text-field v-model="editPerson.birthday" label="Birthday"></v-text-field>
+              <v-text-field outlined v-model="editPerson.birthday" label="Birthday"></v-text-field>
             </v-col>
-            <v-col cols="12" sm="6" md="4">
-              <v-text-field v-model="editPerson.bio" label="Bio"></v-text-field>
+            <v-col cols="12" sm="12" md="12">
+              <v-textarea outlined v-model="editPerson.bio" label="Bio"></v-textarea>
             </v-col>
 
 

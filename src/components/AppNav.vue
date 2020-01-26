@@ -50,16 +50,16 @@
                     <v-container>
                       <v-row>
                         <v-col cols="12" sm="6" md="4">
-                          <v-text-field v-model="newPerson.firstname" label="First name"></v-text-field>
+                          <v-text-field outlined v-model="newPerson.firstname" label="First name"></v-text-field>
                         </v-col>
                         <v-col cols="12" sm="6" md="4">
-                          <v-text-field v-model="newPerson.lastname" label="Last name"></v-text-field>
+                          <v-text-field outlined v-model="newPerson.lastname" label="Last name"></v-text-field>
                         </v-col>
                         <v-col cols="12" sm="6" md="4">
-                          <v-text-field v-model="newPerson.birthday" label="Birthday"></v-text-field>
+                          <v-text-field outlined v-model="newPerson.birthday" label="Birthday"></v-text-field>
                         </v-col>
-                        <v-col cols="12" sm="6" md="4">
-                          <v-text-field v-model="newPerson.bio" label="Bio"></v-text-field>
+                        <v-col cols="12" sm="12" md="12">
+                          <v-textarea outlined v-model="newPerson.bio" label="Bio"></v-textarea>
                         </v-col>
 
 
@@ -69,7 +69,7 @@
 
                   <v-card-actions>
                     <v-spacer></v-spacer>
-                    <v-btn color="blue darken-1" text @click="close()">Cancel</v-btn>
+                    <v-btn color="blue darken-1" text @click.prevent="close()">Cancel</v-btn>
                     <v-btn color="blue darken-1" text @click.prevent="addNewPerson()">Save</v-btn>
                   </v-card-actions>
                 </v-card>
@@ -96,7 +96,6 @@
 <script>
 import {mapActions} from 'vuex';
   export default {
-
     name: 'AppNav',
     props: {
       source: String,
@@ -121,10 +120,12 @@ import {mapActions} from 'vuex';
       ...mapActions(["addPerson"]),
       close() {
         this.newPersonDialog = false;
+        setTimeout(() => {
+        this.newPerson = Object.assign({}, this.defaultPerson);
+      }, 200);
       },
       addNewPersonDialog(){
         this.newPersonDialog = true;
-        this.defaultPerson
       },
       addNewPerson () {
         const new_person = this.newPerson
